@@ -5,42 +5,21 @@ class Sidemenu extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = '';
-    this.listItems = [];
+    this.list = [];
+    this.selectedItem = null;
   }
 
   getTemplate() {
-    // <a
-    //       class="mdc-list-item mdc-list-item--activated"
-    //       href="#"
-    //       aria-current="page"
-    //     >
-    //       <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-    //         >inbox</i
-    //       >
-    //       <span class="mdc-list-item__text">Inbox</span>
-    //     </a>
-    //     <a class="mdc-list-item" href="#">
-    //       <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-    //         >send</i
-    //       >
-    //       <span class="mdc-list-item__text">Outgoing</span>
-    //     </a>
-    //     <a class="mdc-list-item" href="#">
-    //       <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-    //         >drafts</i
-    //       >
-    //       <span class="mdc-list-item__text">Drafts</span>
-    //     </a>
     return `
     <aside class="mdc-drawer">
     <div class="mdc-drawer__content">
       <nav class="mdc-list">
-      ${this.listItems.map(i => `
-        <a class="mdc-list-item" href="#">
+      ${this.list.map(i => `
+        <a data-uui="${i.text}" class="mdc-list-item navItem" href="#">
         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-           >drafts</i
+           >${i.icon}</i
           >
-          <span class="mdc-list-item__text">${i}</span>
+          <span class="mdc-list-item__text">${i.text}</span>
         </a>
         `).join(' ')}
       
@@ -55,12 +34,28 @@ class Sidemenu extends HTMLElement {
   }
 
   init() {
-    this.listItems = this.getAttribute('items').split(',');
-    console.log(this.listItems)
+    const listItems = this.getAttribute('items').split(',');
+    const listIcons = this.getAttribute('icons').split(',');
+
+    this.list = listItems.map((item, i) => ({
+      text: item,
+      icon: listIcons[i],
+    }));
+
     this.innerHTML = this.getTemplate();
 
     const list = MDCList.attachTo(document.querySelector('.mdc-list'));
     list.wrapFocus = true;
+
+    const navItems = document.querySelectorAll('.navItem');
+
+    navItems.forEach((i) => {
+      i.addEventListener('click', () => {
+        const event = new CustomEvent('itemSelected');
+        this.selectedItem = i.getAttribute('data-uui');
+        this.dispatchEvent(event);
+      });
+    });
   }
 }
 
