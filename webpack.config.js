@@ -49,7 +49,8 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Ping Pong app',
+      template: 'index.html',
     }),
   ],
 };

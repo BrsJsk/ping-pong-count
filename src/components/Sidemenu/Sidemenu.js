@@ -1,4 +1,4 @@
-const sitemenuTemplate = () => '<sidemenu-nav></sidemenu-nav>';
+const sitemenuTemplate = () => `<sidemenu-nav items='home,settings,github'></sidemenu-nav>`;
 
 const initSidemenu = () => {
   const app = document.querySelector('#app');
