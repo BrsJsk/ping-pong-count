@@ -1,6 +1,7 @@
 @import "@material/icon-button/mdc-icon-button";
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list";
+@import "@material/fab/mdc-fab";
 
 body {
   display: flex;
@@ -9,6 +10,7 @@ body {
   margin: 0;
   #app {
     height: 100%;
+    width: 100vw;
     .sidemenu {
       height: 100%;
       left: -300px;
@@ -23,7 +25,7 @@ body {
     }
 
     .home {
-      width: 100vw;
+      width: 100%;
       height: calc(100% - 48px);
       display: flex;
       flex-direction: column;
@@ -42,4 +44,19 @@ body {
       }
     }
   }
+}
+
+
+.app-fab--absolute {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+
+@media(min-width: 1024px) {
+  .app-fab--absolute {
+   bottom: 1.5rem;
+   right: 1.5rem;
+ }
 }

@@ -1,4 +1,5 @@
 import { MDCRipple } from '@material/ripple';
+
 import { openSidemenu } from '../Sidemenu/Sidemenu';
 
 const template = () => `
@@ -10,6 +11,11 @@ const template = () => `
     <div>
     </div>
     </div>
+
+    <button class="mdc-fab mdc-fab--extended app-fab--absolute">
+  <span class="material-icons mdc-fab__icon">add</span>
+  <span class="mdc-fab__label">Create</span>
+</button>
     `;
 
 const initHome = () => {
@@ -25,9 +31,7 @@ const initHome = () => {
     document.querySelector('.mdc-icon-button'),
   );
 
-  const foos = [].map.call(document.querySelectorAll('.table-part-1'), (el) => {
-    return new MDCRipple(el);
-  });
+  const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
 
   iconButtonRipple.unbounded = true;
 

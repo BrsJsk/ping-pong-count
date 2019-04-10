@@ -65,6 +65,20 @@
     "@material/feature-targeting" "^0.44.1"
     "@material/theme" "^1.1.0"
 
+"@material/fab@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material/fab/-/fab-1.1.0.tgz#37d25f1c48283a19ac5ebb0cdc8a51fc972cb1e0"
+  integrity sha512-oCvo/4TFri+agTkGvEd5lREuwowInYw6OBbwNmGxpWQs4QGlMGHRS9/h8sfMYNZxs2TrwNUCwf/DK0WZEvniLQ==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/elevation" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^1.1.0"
+    "@material/rtl" "^0.42.0"
+    "@material/shape" "^1.0.0"
+    "@material/theme" "^1.1.0"
+    "@material/typography" "^1.0.0"
+
 "@material/feature-targeting@^0.44.1":
   version "0.44.1"
   resolved "https://registry.yarnpkg.com/@material/feature-targeting/-/feature-targeting-0.44.1.tgz#afafc80294e5efab94bee31a187273d43d34979a"
