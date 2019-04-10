@@ -1,5 +1,4 @@
 const GITHUB_URL = 'https://github.com/BrsJsk/ping-pong-count';
-
 const ITEMS = {
   HOME: 'home',
   SETTINGS: 'settings',
@@ -26,6 +25,35 @@ const initSidemenu = () => {
       window.open(GITHUB_URL, '_blank');
     }
   });
+
+  import(/* webpackChunkName: "hammer" */ 'hammerjs').then(Hammer => {
+    console.log('WATCHING FOR SWIPES')
+    const app = document.querySelector("#app");
+    const mc = new Hammer.Manager(app);
+  
+    const Swipe = new Hammer.Swipe({
+      velocity: 0.2
+    });
+  
+    mc.add(Swipe);
+  
+    //   Name              Value
+    //   DIRECTION_NONE         1
+    //   DIRECTION_LEFT         2
+    //   DIRECTION_RIGHT        4
+    //   DIRECTION_UP           8
+    //   DIRECTION_DOWN         16
+    //   DIRECTION_HORIZONTAL   6
+    //   DIRECTION_VERTICAL     24
+    //   DIRECTION_ALL          30
+    mc.on("swipe", function(e) {
+      if (e.direction === 4) {
+        openSidemenu();
+      } else if (e.direction === 2) {
+        closeSidemenu();
+      }
+    });
+});
 };
 
 const openSidemenu = () => {
