@@ -6,7 +6,7 @@ const ITEMS = {
 };
 
 const sitemenuTemplate = () => `
-<sidemenu-nav icons='inbox,send,drafts' items='${ITEMS.HOME},${ITEMS.SETTINGS},${ITEMS.GITHUB}'></sidemenu-nav>`;
+<sidemenu-nav icons='home,settings,code' items='${ITEMS.HOME},${ITEMS.SETTINGS},${ITEMS.GITHUB}'></sidemenu-nav>`;
 
 const initSidemenu = () => {
   const app = document.querySelector('#app');
@@ -51,6 +51,10 @@ const initSidemenu = () => {
         openSidemenu();
       } else if (e.direction === 2) {
         closeSidemenu();
+      } else if (e.direction === 8) {
+        window.location = '#bottom-sheet';
+      } else if (e.direction === 16) {
+        window.location = '#close';
       }
     });
 });
