@@ -7,13 +7,11 @@ const template = () => `
     <button class="mdc-icon-button material-icons opensidemenuBtn">menu</button>
 
     <div id="table">
-    <div class="table-part-1">
-    </div>
-    <div>
-    </div>
+    <app-table playing="no"></app-table>
+    <app-table playing="no"></app-table>
     </div>
 
-    <fab-button></fab-button>
+    <fab-button playing="no"></fab-button>
     `;
 
 const initHome = () => {
@@ -36,6 +34,24 @@ const initHome = () => {
 
   openSidemenuButton.addEventListener('click', () => {
     openSidemenu();
+  });
+
+  const fabButton = document.querySelector('fab-button');
+  fabButton.addEventListener('click', () => {
+    const isPlaying = fabButton.getAttribute('playing');
+   
+
+    if (isPlaying === 'no') {
+      document.querySelectorAll('app-table').forEach((e) => {
+        e.setAttribute('playing', 'yes');
+      });
+      fabButton.setAttribute('playing', 'yes');
+    } else {
+      document.querySelectorAll('app-table').forEach((e) => {
+        e.setAttribute('playing', 'no');
+      });
+      fabButton.setAttribute('playing', 'no');
+    }
   });
 };
 

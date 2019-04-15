@@ -46,14 +46,6 @@ body {
   }
 }
 
-
-.app-fab--absolute {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-
 @media(min-width: 1024px) {
   .app-fab--absolute {
    bottom: 1.5rem;
