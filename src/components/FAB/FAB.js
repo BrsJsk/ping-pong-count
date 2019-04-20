@@ -1,5 +1,8 @@
 import { MDCRipple } from '@material/ripple';
+import CustomElement from '../../customElement';
 
+@CustomElement('fab-button')
+// eslint-disable-next-line no-unused-vars
 class FAB extends HTMLElement {
   static get observedAttributes() {
     return ['playing'];
@@ -111,5 +114,3 @@ class FAB extends HTMLElement {
     const fabRipple = new MDCRipple(document.querySelector('.mdc-fab'));
   }
 }
-
-window.customElements.define('fab-button', FAB);
